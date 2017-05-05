@@ -21,8 +21,8 @@ findCaseInsensitively = (list, searchTerm) ->
 
 module.exports = (robot) ->
   robot.respond /(glossary|define) (.+)/i, (msg) ->
-    robot.http('https://api.github.com/repos/18f/procurement-glossary/contents/abbreviations.yml')
-      .header('User-Agent', '18F-bot')
+    robot.http('https://api.github.com/repos/orange-cloudfoundry/elpaaso-glossary/contents/abbreviations.yml')
+      .header('User-Agent', 'Elpaaso-bot')
       .get() (err, res, body) ->
         b = new Buffer(JSON.parse(body).content, 'base64');
         g = yaml.safeLoad(b.toString(), { json: true }).abbreviations
@@ -34,4 +34,4 @@ module.exports = (robot) ->
         if term
           msg.reply "The term #{ g[term].longform } (#{ term }) means #{g[term].description}"
         else
-          msg.reply "I don't know that term. If you'd like to add it, the project is at https://github.com/18F/procurement-glossary."
+          msg.reply "I don't know that term. If you'd like to add it, the project is at https://github.com/orange-cloudfoundry/elpaaso-glossary."
