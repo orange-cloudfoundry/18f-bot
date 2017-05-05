@@ -1,13 +1,10 @@
 {
   "orgs": {
-    "cap": {
-      "room": "cap"
+    "system_domain": {
+      "room": "cf-deployment"
     },
-    "sandbox": {
-      "room": "transient"
-    },
-    "fec": {
-      "room": "fec"
+    "orange": {
+      "room": "cf-deployment"
     }
   }
 }
