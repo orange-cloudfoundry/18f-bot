@@ -1,10 +1,27 @@
 ---
 applications:
-- name: charlie
-  buildpack: nodejs_buildpack
-  memory: 512M
+- name: elbot
   instances: 1
-  host: charlie
+  memory: 512M
+  buildpack: nodejs_buildpack
+  host: elbot
+  domain: nd-cfapi.itn.ftgroup
+
   services:
-    - charlie-redis
-    - charlie-bucket
+    - redis-bot
+#    - charlie-redis
+#    - charlie-bucket
+  env:
+    HUBOT_CF_API_ORIGIN: https://api.nd-cfapi.itn.ftgroup
+    HUBOT_CF_UAA_ORIGIN: https://uaa.nd-cfapi.itn.ftgroup
+    HUBOT_CF_USER: soutien.elpaaso@orange.com
+    HUBOT_CF_PASS: 39AC64C9yWnkV4UOLv3f
+    HUBOT_GITHUB_ORG: Orange-OpenSource
+    HUBOT_GITHUB_TOKEN: 693d5060347f54e510029a4f4842d2d677600708
+    HUBOT_GITHUB_REPOS_MAP: '{"brokers":["static-creds-broker","elpaaso-brokers", "autosleep"],"elpaaso-oss":["elpaaso-core", "elpaaso-starter-parent", "elpaaso-build-tools", "elpaaso", "elpaaso-dbaas-wsdl", "elpaaso-plugins-management", "elpaaso-samples", "elpaaso-wsdl", "elpaaso-system-test-apps"],"sandbox-service":["elpaaso-sandbox-ui","elpaaso-sandbox-service","elpaaso-sandbox-boshrelease"],"db-dumper-service":["db-dumper-service", "db-dumper-cli-plugin"]}'
+    MATTERMOST_ENDPOINT: /elbot/incoming
+    MATTERMOST_HUBOT_USERNAME: elbot
+    MATTERMOST_ICON_URL: http://www.mobilevillage.com/wp-content/uploads/2016/01/Elbot-robot-50x50.jpg
+    MATTERMOST_INCOME_URL: https://mattermost.nd-cfapi.itn.ftgroup/hooks/wdaagnp447dwjmuj4pk59816ra
+    MATTERMOST_TOKEN: db766pgoxi8n8joeew1338cn4c
+    NODE_TLS_REJECT_UNAUTHORIZED: 0
